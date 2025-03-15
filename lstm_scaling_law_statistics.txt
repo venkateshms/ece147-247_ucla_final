@@ -1,0 +1,38 @@
+LSTM SCALING LAW STATISTICS
+=================================
+
+MODEL PARAMETER COUNTS
+------------------------------
+4.9M Parameters
+1.8M Parameters
+12.2M Parameters
+
+
+TRAIN_LOSS_FLOPS SCALING LAW
+------------------------------
+Equation: L(C) = 1.300111e+18 * C^-1.115857
+R-squared: 0.997820
+p-value: 0.046689
+Statistically significant: Yes
+
+VAL_LOSS_FLOPS SCALING LAW
+------------------------------
+Equation: L(C) = 1.152686e+07 * C^-0.434862
+R-squared: 0.893150
+p-value: 0.326879
+Statistically significant: No
+
+TRAIN_CER_FLOPS SCALING LAW
+------------------------------
+Equation: CER(C) = 5.711353e+18 * C^-1.063134
+R-squared: 0.988711
+p-value: 0.050000
+Statistically significant: No
+
+VAL_CER_FLOPS SCALING LAW
+------------------------------
+Equation: CER(C) = 3.444849e+09 * C^-0.495417
+R-squared: 0.909696
+p-value: 0.050000
+Statistically significant: No
+

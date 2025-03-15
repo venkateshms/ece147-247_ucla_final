@@ -1,0 +1,50 @@
+TRANSFORMER SCALING LAW STATISTICS
+=================================
+
+MODEL PARAMETER COUNTS
+------------------------------
+Model A: 1.1 million parameters
+Model B: 3.2 million parameters
+Model C: 8.2 million parameters
+
+
+TRAIN_LOSS_FLOPS SCALING LAW
+------------------------------
+Equation: L(C) = 2.084846e+01 * C^-0.060696  (C = Compute in FLOPs)
+R-squared: 0.992332
+p-value: 0.087568
+Statistically significant: No
+Interpretation: The relationship between compute and performance is not statistically significant.
+The scaling coefficient (b = -0.0607) indicates a weak improvement with increasing compute.
+
+
+VAL_LOSS_FLOPS SCALING LAW
+------------------------------
+Equation: L(C) = 5.216189e+00 * C^-0.024896  (C = Compute in FLOPs)
+R-squared: 0.942949
+p-value: 0.238852
+Statistically significant: No
+Interpretation: The relationship between compute and performance is not statistically significant.
+The scaling coefficient (b = -0.0249) indicates a weak improvement with increasing compute.
+
+
+TRAIN_CER_FLOPS SCALING LAW
+------------------------------
+Equation: CER(C) = 1.652050e+02 * C^-0.014022  (C = Compute in FLOPs)
+R-squared: 0.992113
+p-value: 0.050000
+Statistically significant: No
+Interpretation: The relationship between compute and performance is not statistically significant.
+The scaling coefficient (b = -0.0140) indicates a weak improvement with increasing compute.
+
+
+VAL_CER_FLOPS SCALING LAW
+------------------------------
+Equation: CER(C) = 1.391437e+02 * C^-0.009271  (C = Compute in FLOPs)
+R-squared: 0.913124
+p-value: 0.050000
+Statistically significant: No
+Interpretation: The relationship between compute and performance is not statistically significant.
+The scaling coefficient (b = -0.0093) indicates a weak improvement with increasing compute.
+
+
