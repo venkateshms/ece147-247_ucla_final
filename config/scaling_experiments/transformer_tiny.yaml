@@ -1,0 +1,36 @@
+# @package _global_
+# Tiny Transformer Model (smallest size)
+
+module:
+  _target_: emg2qwerty.lightning.TransformerCTCModule
+  in_features: 528  # freq * channels = (n_fft // 2 + 1) * 16
+  d_model: 128  # Small model dimension
+  nhead: 2  # Number of attention heads
+  num_layers: 2  # Number of transformer layers
+  dim_feedforward: 512  # Dimension of feedforward network
+  dropout: 0.1
+  activation: "relu"
+  positional_encoding: true
+  max_seq_length: 10000  # Maximum sequence length for positional encoding
+
+# Fixed optimizer and learning rate across all scaling experiments
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 0.001
+  weight_decay: 0.0001
+
+# Define a simpler learning rate scheduler that works with direct optimizer passing
+# Use _target_global_ to completely override the base configuration
+lr_scheduler:
+  _target_global_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  mode: min
+  patience: 2
+  factor: 0.5
+  # Add required parameters for PyTorch Lightning
+  interval: epoch
+  monitor: val/loss
+
+datamodule:
+  _target_: emg2qwerty.lightning.WindowedEMGDataModule
+  window_length: 8000  # 4 sec windows for 2kHz EMG
+  padding: [1800, 200]  # 900ms past context, 100ms future context 

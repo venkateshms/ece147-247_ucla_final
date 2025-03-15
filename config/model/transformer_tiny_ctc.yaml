@@ -1,0 +1,11 @@
+model:
+  name: transformer_tiny
+  layers: 2
+  hidden_size: 64
+  learning_rate: 0.001
+  dropout: 0.1
+  max_seq_length: 5000
+  positional_encoding: true
+  nhead: 4
+  dim_feedforward: 256
+  activation: relu 

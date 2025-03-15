@@ -1,0 +1,29 @@
+# @package _global_
+module:
+  _target_: emg2qwerty.lightning.LSTMCTCModule
+  in_features: 528  # freq * channels = (n_fft // 2 + 1) * 16
+  hidden_size: 512  # Larger hidden size
+  num_layers: 4     # More layers
+  dropout: 0.2      # More dropout for regularization
+  bidirectional: true
+# Define optimizer explicitly for this model
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 0.001  # Fixed learning rate at 1e-3
+  weight_decay: 0.0001  # Same as original model
+
+# Define a simpler learning rate scheduler that works with direct optimizer passing
+# Use _target_global_ to completely override the base configuration
+lr_scheduler:
+  _target_global_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  mode: min
+  patience: 3  # More patience
+  factor: 0.5
+  # Add required parameters for PyTorch Lightning
+  interval: epoch
+  monitor: val/loss
+
+datamodule:
+  _target_: emg2qwerty.lightning.WindowedEMGDataModule
+  window_length: 8000  # 4 sec windows for 2kHz EMG
+  padding: [1800, 200]  # 900ms past context, 100ms future context 
